@@ -1,22 +1,23 @@
 import React,{useState,useContext} from 'react'
 import {Link } from 'react-router-dom'
-
 import M from 'materialize-css'
 import {useNavigate} from 'react-router-dom'
 import { UserContext } from '../../App'
+
+const host ="https://instagram-clone-backened.onrender.com";
+
 
 const SignIn=()=>  {
   const {state,dispatch}=useContext(UserContext)
 const [password, setPassword] = useState("")
 const [email, setEmail] = useState("")
 let navigate =useNavigate();
-
 const PostData =()=>{
   if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
    M.toast({html: "Invalid Email", classes:"#d32f2f red darken-2"})
    return
   }  
-  fetch("http://localhost:3000/signin",{
+  fetch(`${host}/signin`,{
     method:"post",
     headers:{
       "Content-Type":"application/json"

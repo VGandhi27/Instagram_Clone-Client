@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom'
 import M from 'materialize-css'
 import {useNavigate} from 'react-router-dom'
 
+const host ="https://instagram-clone-backened.onrender.com";
+
+
  const SignIn=()=> {
 
 const [name, setName] = useState("")
@@ -15,7 +18,7 @@ const PostData =()=>{
    M.toast({html: "Invalid Email", classes:"#d32f2f red darken-2"})
    return
   }  
-  fetch("http://localhost:3000/signup",{
+  fetch(`${host}/signup`,{
     method:"post",
     headers:{
       "Content-Type":"application/json"
